@@ -1,0 +1,68 @@
+@import '../../styles/color-palette.scss';
+@import '../../styles/shadows.scss';
+@import '../../styles/mixins.scss';
+
+%basicPopover {
+  position: absolute;
+  width: 240px;
+  height: auto;
+  top: 50px;
+  color: $primary-text-color;
+  background: $color-white;
+  box-shadow: $primary-box-shadow;
+  border: 1px solid $primary-border-color;
+  border-radius: 2px;
+  z-index: 1000;
+}
+
+.Popover {
+  @extend %basicPopover;
+}
+
+.activityFeed {
+  @extend %basicPopover;
+  top: 47px;
+  width: 600px;
+  z-index: 5;
+  right: -22px;
+
+  @include respond(phablet) {
+    width: 100%;
+    position: fixed;
+    top: 53px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  @include respond(phone) {
+    width: 100%;
+    position: fixed;
+    top: 43px;
+    right: 0;
+    left: 0;
+    bottom: 48px;
+  }
+}
+
+.triangle {
+  @include absCenter;
+  top: -7px;
+  width: 0;
+  height: 0;
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid transparent;
+  border-bottom: 15px solid $color-white;
+  filter: drop-shadow($primary-box-shadow);
+
+  // @include respond(phone) {
+  //   display: none;
+  // }
+}
+
+.content {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  max-height: 360px;
+}
